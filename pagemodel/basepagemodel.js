@@ -7,7 +7,7 @@ const { debug } = require('console')
 
 class BasePageModel {
 
-    constructor(driver, timeout)
+    constructor(driver)
     {
         this.driver = driver;
         this.timeout = timeout;
@@ -29,10 +29,6 @@ class BasePageModel {
         await this.driver.wait(until.elementLocated(selector), this.timeout);
         let input = await this.driver.findElement(selector);
         await input.click();
-    }
-
-    waitInMilliSeconds = async (t) => {
-        await sleep(t);
     }
 
     isElementDisplayed = async (selector) =>

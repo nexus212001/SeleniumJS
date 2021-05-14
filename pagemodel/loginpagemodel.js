@@ -1,5 +1,6 @@
 const { BasePageModel } = require("./basepagemodel");
 const { By, until } = require('selenium-webdriver');
+const { timeout } = require("../tests/base-test")
 
 let usernameField = By.css('#UserName');
 let passwordField = By.css('#Password');
@@ -7,9 +8,9 @@ let loginButton = By.css('#Login');
 
 class LoginPageModel extends BasePageModel {
     
-    constructor(driver, timeout)
+    constructor(driver)
     {
-        super(driver, timeout);
+        super(driver);
         this.driver = driver;
         this.timeout = timeout;
     }

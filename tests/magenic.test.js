@@ -9,13 +9,13 @@ describe('Test suite', () => {
         jest.setTimeout(timeout);
     });
 
-    test('Login case', async () => {
-        let loginPage = new LoginPageModel(this.driver, this.timeout);
+    test('Test case name here', async () => {
+        let loginPage = new LoginPageModel(this.driver);
         await loginPage.openPage();
         expect(await loginPage.isPageLoaded()).toBe(true);
         await loginPage.enterCredentials("Ted","123");
         await loginPage.clickLoginButton();
-        let homePage = new HomePageModel(this.driver, this.timeout);
+        let homePage = new HomePageModel(this.driver);
         expect(await homePage.isPageLoaded()).toBe(true);
     });
     

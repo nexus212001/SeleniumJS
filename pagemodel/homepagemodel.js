@@ -1,13 +1,13 @@
 const { BasePageModel } = require("./basepagemodel");
 const { By } = require('selenium-webdriver');
-
+const { timeout } = require("../tests/base-test")
 let homeTabSelector = By.css('#Home');
 
 class HomePageModel extends BasePageModel {
 
-    constructor(driver, timeout)
+    constructor(driver)
     {
-        super(driver, timeout);
+        super(driver);
         this.driver = driver;
         this.timeout = timeout;
     }
