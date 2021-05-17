@@ -8,7 +8,9 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "faker": "^5.5.3"
+  },
   "devDependencies": {
     "chromedriver": "^89.0.0",
     "jest": "^26.6.3",

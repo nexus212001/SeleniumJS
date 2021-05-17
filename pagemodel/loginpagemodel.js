@@ -1,6 +1,6 @@
 const { BasePageModel } = require("./basepagemodel");
 const { By, until } = require('selenium-webdriver');
-const { timeout } = require("../tests/base-test")
+const { baseUrl, timeout } = require("../tests/base-test");
 
 let usernameField = By.css('#UserName');
 let passwordField = By.css('#Password');
@@ -16,7 +16,7 @@ class LoginPageModel extends BasePageModel {
     }
 
     openPage = async () => {
-        await this.navigateToLoginPage();
+        await this.navigateToUrl(baseUrl);
     }
 
     enterCredentials = async (username, password) =>

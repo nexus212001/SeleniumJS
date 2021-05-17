@@ -1,9 +1,8 @@
-const { promisify, debuglog } = require('util')
-const sleep = promisify(setTimeout)
-const { until, Builder } = require('selenium-webdriver')
-const chrome = require('chromedriver')
-const { baseUrl, timeout } = require("../tests/base-test")
-const { debug } = require('console')
+const { promisify, debuglog } = require('util');
+const sleep = promisify(setTimeout);
+const { until, Builder, By } = require('selenium-webdriver');
+const chrome = require('chromedriver');
+const { timeout } = require("../tests/base-test");
 
 class BasePageModel {
 
@@ -13,9 +12,9 @@ class BasePageModel {
         this.timeout = timeout;
     }
 
-    navigateToLoginPage = async () => {
+    navigateToUrl = async (url) => {
         await this.driver.manage().window().maximize();
-        await this.driver.get(baseUrl);
+        await this.driver.get(url);
     }
 
     enterText = async (selector, value) => {
@@ -38,6 +37,16 @@ class BasePageModel {
             return el.isDisplayed();
         });
         return isDisplayed;
+    }
+
+    selectRandomFromDropdown = async (selector) => {
+        await this.driver.wait(until.elementIsVisible(this.driver.findElement(selector)), this.timeout);
+        let options = await this.driver.findElement(selector).then(async (el) => {
+            return await el.findElements(By.css("option"));
+        });
+        let selected = options[Math.floor(Math.random() * options.length)];
+        await selected.click();
+        return await selected.getText();
     }
 }
 
