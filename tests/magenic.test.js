@@ -43,6 +43,9 @@ describe('Test suite', () => {
         let deleteEmployeePage = await employeePage.clickDeleteOnLastEntry();
         expect(await deleteEmployeePage.isPageLoaded()).toBe(true);
         await deleteEmployeePage.clickDeleteButton();
+        expect(await employeePage.isPageLoaded()).toBe(true);
+        let lastRowEmployee = await employeePage.getLastRow();
+        expect(lastRowEmployee).not.toEqual(expectedEmployee);
     });
     
     afterAll(async () => {
