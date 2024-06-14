@@ -2,9 +2,12 @@ const webdriver = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 const chromedriver = require('chromedriver');
 
-chrome.setDefaultService(new chrome.ServiceBuilder(chromedriver.path).build());
+//chrome.setDefaultService(new chrome.ServiceBuilder(chromedriver.path).build());
+//const driver = getWebDriver();
 
-const driver = getWebDriver();
+let driver = new webdriver.Builder()
+                    .forBrowser(webdriver.Browser.CHROME)
+                    .build();
 
 const timeout = 10000;
 
